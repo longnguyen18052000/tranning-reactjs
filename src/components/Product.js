@@ -24,13 +24,12 @@ function Product({ product, removeItem, item, setData, data }) {
   const handleSave = (id) => {
     const newData = { title: title, price: price, stock: stock, brand: brand };
     const editedTaskList = data.map((task) => {
-      // if this task has the same ID as the edited task
       if (id === task.id) {
-        //
-        return { ...task, newData }
+        return newData
       }
       return task;
     });
+    console.log(editedTaskList);
     setData(editedTaskList);
     setShow(false);
   }
