@@ -22,7 +22,7 @@ function Product({ product, removeItem, item, setData, data }) {
   const [brand, setBrand] = useState("");
 
   const handleSave = (id) => {
-    const newData = { title: title, price: price, stock: stock, brand: brand };
+    const newData = {id: id, title: title, price: price, stock: stock, brand: brand };
     const editedTaskList = data.map((task) => {
       if (id === task.id) {
         return newData
