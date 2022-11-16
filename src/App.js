@@ -21,10 +21,12 @@ const App = () => {
   const [stock, setStock] = useState("");
   const [brand, setBrand] = useState("");
 
+  const [idLength, setIdLength] = useState(currentData.length + 1);
   const handleSave = () => {
-      const newData = {id: data.length + 1, title: title, price: price, stock: stock, brand: brand };
-      setData([...data, newData]);
-      setShow(false);
+    setIdLength(count => count + 1)
+    const newData = { id: idLength, title: title, price: price, stock: stock, brand: brand };
+    setData([...data, newData]);
+    setShow(false);
   }
 
   const removeItem = (id) => {

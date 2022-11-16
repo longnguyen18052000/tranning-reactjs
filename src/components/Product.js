@@ -29,12 +29,11 @@ function Product({ product, removeItem, item, setData, data }) {
       }
       return task;
     });
-    console.log(editedTaskList);
     setData(editedTaskList);
     setShow(false);
   }
 
-  function removeItemComponent() {
+  const removeItemComponent = () => {
     removeItem(item.id);
   }
 
