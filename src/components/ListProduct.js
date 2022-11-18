@@ -23,11 +23,18 @@ const ListProduct = () => {
 
     const [idLength, setIdLength] = useState(currentData.length + 1);
     const handleSave = () => {
-        setIdLength(count => count + 1)
-        const newData = { id: idLength, title: title, price: price, stock: stock, brand: brand };
-        setData([...data, newData]);
-        setShow(false);
+        if (title !== "" && price !== "" && stock !== "" && brand !== "") {
+            setIdLength(count => count + 1)
+            const newData = { id: idLength, title: title, price: price, stock: stock, brand: brand };
+            setData([...data, newData]);
+            setShow(false);
+        }
+        setTitle("");
+        setPrice("");
+        setStock("");
+        setBrand("");
     }
+
 
     const removeItem = (id) => {
         const newData = data.filter((item) => item.id !== id);
