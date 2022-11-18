@@ -54,20 +54,21 @@ const ListProduct = () => {
                     <Modal.Title>Add Product</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="mb-3">
-                        <label className="w-25">Title: </label>
+                    <div>Các trường có dấu <span className="text-danger">*</span> là bắt buộc cần nhập</div>
+                    <div className="mb-3 mt-3">
+                        <label className="w-25">Title: <span className="text-danger">*</span></label>
                         <input type="text" className="py-1 w-50" onChange={(e) => setTitle(e.target.value)} />
                     </div>
                     <div className="mb-3">
-                        <label className="w-25">Price: </label>
+                        <label className="w-25">Price: <span className="text-danger">*</span></label>
                         <input type="text" className="py-1 w-50" onChange={(e) => setPrice(e.target.value)} />
                     </div>
                     <div className="mb-3">
-                        <label className="w-25">Stock: </label>
+                        <label className="w-25">Stock: <span className="text-danger">*</span></label>
                         <input type="text" className="py-1 w-50" onChange={(e) => setStock(e.target.value)} />
                     </div>
                     <div>
-                        <label className="w-25">Brand: </label>
+                        <label className="w-25">Brand: <span className="text-danger">*</span></label>
                         <input type="text" className="py-1 w-50" onChange={(e) => setBrand(e.target.value)} />
                     </div>
                 </Modal.Body>
