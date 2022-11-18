@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
 import Products from "./Products";
-import { currentData } from "./data";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -9,7 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import "../App.css";
 
 const ListProduct = () => {
-    const [data, setData] = useState(currentData);
+    const [data, setData] = useState([]);
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -21,11 +21,12 @@ const ListProduct = () => {
     const [stock, setStock] = useState("");
     const [brand, setBrand] = useState("");
 
-    const [idLength, setIdLength] = useState(currentData.length + 1);
+    const [currentData, setCurrentData] = useState(0);
+
     const handleSave = () => {
         if (title !== "" && price !== "" && stock !== "" && brand !== "") {
-            setIdLength(count => count + 1)
-            const newData = { id: idLength, title: title, price: price, stock: stock, brand: brand };
+            setCurrentData(count => count + 1)
+            const newData = { id: currentData, title: title, price: price, stock: stock, brand: brand };
             setData([...data, newData]);
             setShow(false);
         }
@@ -40,6 +41,17 @@ const ListProduct = () => {
         const newData = data.filter((item) => item.id !== id);
         setData(newData);
     }
+
+    useEffect(() => {
+        const getData = async function () {
+            const baseURL = "http://localhost:5000/currentData";
+            const response = await axios.get(baseURL);
+            const new_data = response.data;
+            setData(new_data);
+            setCurrentData(new_data.length + 1)
+        }
+        getData();
+    }, [])
 
     return (
         <div className="App">
